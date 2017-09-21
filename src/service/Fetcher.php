@@ -7,8 +7,26 @@ class Fetcher
 
     public function getData($url)
     {
-        if ($this->validateUrl($url))
+        if ($this->validateUrl($url)){
             return file_get_contents($url);
+        }
+
+        return [];
+
+    }
+
+
+    public function isSiteValid($url)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_exec($ch);
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+
+        return $code == 200 ? true : false;
+
     }
 
 
