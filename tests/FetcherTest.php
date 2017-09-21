@@ -124,12 +124,13 @@ class FetcherTest extends TestCase
     }
 
     /**
+     *
      * @dataProvider sitesProvider
      */
-    public function testLiveSites($url, $expected)
-    {
-        $data = $this->fetcher->isSiteValid($url);
-        self::assertEquals($expected, $data);
-    }
+//    public function testLiveSites($url, $expected)
+//    {
+//        $data = $this->fetcher->isSiteValid($url);
+//        self::assertEquals($expected, $data);
+//    }
 
 }

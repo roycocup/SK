@@ -1,0 +1,4 @@
+# Dependencies
+dependency:
+  class: HomeController
+  depends: [Fetcher]

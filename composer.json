@@ -15,6 +15,7 @@
     "require": {
         "symfony/templating": "^3.3",
         "nezamy/route": "^1.1",
-        "phpunit/phpunit": "^6.3"
+        "phpunit/phpunit": "^6.3",
+        "symfony/yaml": "^3.3"
     }
 }
