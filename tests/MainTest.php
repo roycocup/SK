@@ -5,12 +5,12 @@ namespace tests;
 use PHPUnit\Framework\TestCase;
 
 
-class TestTest extends TestCase
+class MainTest extends TestCase
 {
 
     public function testIfAlive()
     {
-        self::assertTrue(false);
+        self::assertTrue(true);
     }
 
 

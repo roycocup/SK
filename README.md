@@ -37,7 +37,8 @@ Your solution needs to enable us to check a specific unit & metric (e.g. unit #1
 ## JSON
 Available here: `http://tech-test.sandbox.samknows.com/php-2.0/testdata.json`
 
-The structure is pretty simple and contains a few units for which we will give you 4 metrics (`download`, `upload`, `latency` and `packet_loss`. Every one of those metrics contains a large amount of data points with `timestamp` and `value`.
+The structure is pretty simple and contains a few units for which we will give you 4 metrics (`download`, `upload`, `latency` and `packet_loss`. 
+Every one of those metrics contains a large amount of data points with `timestamp` and `value`.
 
 ```javascript
 [
