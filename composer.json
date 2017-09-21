@@ -1,0 +1,20 @@
+{
+    "name": "root/sk",
+    "authors": [
+        {
+            "name": "Rodrigo Dias",
+            "email": "rodrigo.pitta@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SK\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "symfony/templating": "^3.3",
+        "nezamy/route": "^1.1",
+        "phpunit/phpunit": "^6.3"
+    }
+}
