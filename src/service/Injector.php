@@ -14,4 +14,10 @@ class Injector
         $this->configs = Yaml::parse(file_get_contents($this->configFilename));
     }
 
+    public function inject($obj)
+    {
+        $className = get_class($obj);
+//        array_search($className, $this->configs['dependencies'])
+    }
+
 }

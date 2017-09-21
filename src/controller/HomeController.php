@@ -3,7 +3,9 @@
 namespace SK\Controller;
 
 
-class HomeController{
+class HomeController extends Controller {
+
+    public $fetcher;
 
     public function home()
     {

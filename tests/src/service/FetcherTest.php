@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Tests\service;
 
 use SK\Service\Fetcher;
 use PHPUnit\Framework\TestCase;
