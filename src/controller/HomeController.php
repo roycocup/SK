@@ -9,6 +9,7 @@ class HomeController extends Controller {
 
     public function home()
     {
+        var_dump($this->fetcher); die;
         echo "all good";
     }
 }

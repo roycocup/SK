@@ -17,7 +17,8 @@ class Injector
     public function inject($obj)
     {
         $className = get_class($obj);
-//        array_search($className, $this->configs['dependencies'])
+        //$this->configs['dependencies']
+        $obj->setDI('fetcher', new Fetcher());
     }
 
 }
