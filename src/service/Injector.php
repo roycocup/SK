@@ -2,6 +2,7 @@
 
 namespace SK\Service;
 
+use SK\interfaces\Injectable;
 use Symfony\Component\Yaml\Yaml;
 
 class Injector
@@ -11,14 +12,12 @@ class Injector
 
     public function __construct()
     {
-        $this->configs = Yaml::parse(file_get_contents($this->configFilename));
+
     }
 
-    public function inject($obj)
+    public function inject(Injectable $obj)
     {
-        $className = get_class($obj);
-        //$this->configs['dependencies']
-        $obj->setDI('fetcher', new Fetcher());
+//        $className = get_class($obj);
     }
 
 }

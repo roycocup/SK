@@ -7,7 +7,8 @@ error_reporting(E_ALL);
 
 
 define('DS', DIRECTORY_SEPARATOR, true);
-define('BASE_PATH', __DIR__ . DS, TRUE);
+define('BASE_PATH', __DIR__ . DS, true);
+//define('CONFIGFOLDER', BASE_PATH . "configs" . DS);
 
 require BASE_PATH.'vendor/autoload.php';
 

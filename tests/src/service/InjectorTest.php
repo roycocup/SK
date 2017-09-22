@@ -17,26 +17,33 @@ class InjectorTest extends TestCase
         $this->injector = new Injector();
     }
 
-    public function test_can_read_yaml_configs_into_array()
+    public function test_placeholder()
     {
-        self::assertTrue(is_array($this->injector->configs));
+        self::assertTrue(true);
     }
 
-    public function test_should_call_setDI_in_host_method()
-    {
-        $mock = $this->getMockBuilder(HomeController::class)
-            ->setMethods(['setDI'])
-            ->getMock()
-            ->expects($this->once())
-            ->method('setDI')
-            //->with('fetcher', new Fetcher())
-            ->willReturn(0)
-        ;
 
-        $this->injector->inject($mock);
+//    public function test_should_return_correct_testing_class_from_config()
+//    {
+//        $this->injector->getDependenciesForObject('InjectorTestClass');
+//    }
 
-//        self::assertNotNull($mock->fetcher);
-    }
+
+//    public function test_should_call_setDI_in_host_object()
+//    {
+//        $mock = $this->getMockBuilder(HomeController::class)
+//            ->setMethods(['setDI'])
+//            ->getMock();
+//
+//        $mock->expects(self::once())
+//            ->method('setDI')
+//            ->with('fetcher', new Fetcher());
+//
+//        $this->injector->inject($mock);
+//    }
+
+
+
 
 
 }
