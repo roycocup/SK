@@ -5,6 +5,7 @@ namespace Tests\service;
 use PHPUnit\Framework\TestCase;
 use SK\Service\Fetcher;
 use SK\Service\Injector;
+use SK\Controller\HomeController;
 
 class InjectorTest extends TestCase
 {
@@ -16,17 +17,21 @@ class InjectorTest extends TestCase
         $this->injector = new Injector();
     }
 
-    public function testCanReadYamlConfigsIntoArray()
+    public function test_can_read_yaml_configs_into_array()
     {
         self::assertTrue(is_array($this->injector->configs));
     }
 
-    public function testIsInjecting()
+    public function test_should_call_setDI_in_host_method()
     {
-        $mock = $this->createMock('SK\Controller\HomeController')
-            ->expects(self::once())
+        $mock = $this->getMockBuilder(HomeController::class)
+            ->setMethods(['setDI'])
+            ->getMock()
+            ->expects($this->once())
             ->method('setDI')
-            ->with('fetcher', new Fetcher());
+            //->with('fetcher', new Fetcher())
+            ->willReturn(0)
+        ;
 
         $this->injector->inject($mock);
 

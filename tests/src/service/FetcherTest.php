@@ -15,19 +15,19 @@ class FetcherTest extends TestCase
         $this->fetcher = new Fetcher();
     }
 
-    public function testCanGetData()
+    public function test_can_get_data()
     {
         $data = $this->fetcher->getData("http://google.com");
         self::assertNotEmpty($data);
     }
 
-    public function testDataIsLive()
+    public function test_data_is_from_live_source()
     {
         $data = $this->fetcher->getData("http://rodderscode.co.uk");
         self::assertEquals(file_get_contents("http://rodderscode.co.uk"), $data);
     }
 
-    public function invalidUrlProvider()
+    public function invalid_url_provider()
     {
         return [
             ["lkmsldk", false],
@@ -40,15 +40,15 @@ class FetcherTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidUrlProvider
+     * @dataProvider invalid_url_provider
      */
-    public function testInvalidUrlReturnsFalse($url, $expected)
+    public function test_invalid_url_returns_false($url, $expected)
     {
         $data = $this->fetcher->validateUrl($url);
         self::assertEquals($expected, $data);
     }
 
-    public function validUrlProvider()
+    public function valid_url_provider()
     {
         return [
             ["http://lkjk.com", true],
@@ -61,9 +61,9 @@ class FetcherTest extends TestCase
     }
 
     /**
-     * @dataProvider validUrlProvider
+     * @dataProvider valid_url_provider
      */
-    public function testValidUrlReturnsTrue($url, $expected)
+    public function test_valid_url_returns_true($url, $expected)
     {
         $data = $this->fetcher->validateUrl($url);
         self::assertEquals($expected, $data);
@@ -71,16 +71,16 @@ class FetcherTest extends TestCase
 
 
     /**
-     * @dataProvider invalidUrlProvider
+     * @dataProvider invalid_url_provider
      */
-    public function testInvalidUrlReturnsEmptyArray($url, $expected)
+    public function test_invalid_url_returns_empty_array($url, $expected)
     {
         $data = $this->fetcher->getData($url);
         self::assertEquals([], $data);
     }
 
 
-    public function testCurlIsEnabledAndWorking()
+    public function test_curl_is_enabled_and_working()
     {
         $worked = false;
         try {
@@ -97,7 +97,7 @@ class FetcherTest extends TestCase
 
     }
 
-    public function testStreamGetContentsWorks()
+    public function test_stream_get_contents_works()
     {
         $worked = false;
         try{
@@ -112,7 +112,7 @@ class FetcherTest extends TestCase
     }
 
 
-    public function sitesProvider()
+    public function sites_provider()
     {
         return [
             ["http://rodderscode.co.uk", true],
@@ -123,14 +123,5 @@ class FetcherTest extends TestCase
         ];
     }
 
-    /**
-     *
-     * @dataProvider sitesProvider
-     */
-//    public function testLiveSites($url, $expected)
-//    {
-//        $data = $this->fetcher->isSiteValid($url);
-//        self::assertEquals($expected, $data);
-//    }
 
 }

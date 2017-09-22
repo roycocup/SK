@@ -8,7 +8,7 @@ use SK\Service\Fetcher;
 
 class HomeControllerTest extends TestCase
 {
-    public function testControllerCanBeBuilt()
+    public function test_controller_can_be_built()
     {
         $homeController = new HomeController();
         self::assertTrue(is_object($homeController));
