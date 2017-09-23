@@ -16,6 +16,9 @@ class ConfigManager
 
     public function getDependencies(String $className): array
     {
+        $xplodedClassname = explode('\\', $className);
+        $className = $xplodedClassname[count($xplodedClassname)-1];
+
         if (!empty($this->configs['dependencies'])){
             foreach ($this->configs['dependencies'] as $key=>$dependencies){
                 if($key == $className){

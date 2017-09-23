@@ -1,3 +1,3 @@
 dependencies:
-  TestClass: [Fetcher]
-  HomeController: [Fetcher]
+  TestClass: ['SK\Service\Fetcher']
+  Setup: ['SK\Service\Fetcher']

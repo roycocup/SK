@@ -1,11 +1,12 @@
 <?php
 
-namespace SK\controller;
+namespace SK\Cli;
+
 
 use SK\interfaces\Injectable;
 use SK\Service\Injector;
 
-class Controller implements Injectable
+class Command implements Injectable
 {
     public $injector;
 
