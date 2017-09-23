@@ -9,15 +9,29 @@ class Setup extends Command
     public $configmanager;
     public $cache;
 
+    public static $cacheFilename = 'cacheData.txt';
+
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function getOnlineData()
+    public function getRawData()
     {
         $url = $this->configmanager->get('dataUrl');
-        $this->rawData = $this->fetcher->getData($url);
+
+        $cachedData = $this->cache->getCached(self::$cacheFilename);
+
+        if($cachedData)
+            $this->rawData = $cachedData;
+        else{
+            $this->rawData = $this->fetcher->getData($url);
+            $this->cache->cache(self::$cacheFilename, $this->rawData);
+        }
+
+        return $this->rawData;
     }
+
+
 
 }

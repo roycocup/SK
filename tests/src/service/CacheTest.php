@@ -15,11 +15,22 @@ use SK\Service\Cache;
 class CacheTest extends TestCase
 {
     public $cache;
+    public $cacheFolder;
+    public $bogusFile;
 
     public function setUp()
     {
         parent::setUp();
         $this->cache = new Cache();
+        $this->cacheFolder = __DIR__."/../../../cache/";
+        $this->bogusFile = 'bogus.txt';
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
+        if (is_file($this->cacheFolder.$this->bogusFile))
+            unlink($this->cacheFolder.$this->bogusFile);
     }
 
     public function delTree($dir) {
@@ -33,20 +44,19 @@ class CacheTest extends TestCase
     // can get cache exists boolean
     public function test_creates_if_cache_folder_not_exist()
     {
-        $cacheFolder = __DIR__."/../../../cache/";
-        if(is_dir($cacheFolder))
-            $this->deltree($cacheFolder);
+
+        if(is_dir($this->cacheFolder))
+            $this->deltree($this->cacheFolder);
 
         $this->cache->createFolderIfNotExists();
-        self::assertTrue(is_dir($cacheFolder));
+        self::assertTrue(is_dir($this->cacheFolder));
     }
 
 
 
     public function test_returns_boolean_on_cache_existance()
     {
-        $filename = "bogus.txt";
-        self::assertFalse($this->cache->getCached($filename));
+        self::assertFalse($this->cache->getCached($this->bogusFile));
         $filename = "bogus3333333.txt";
         self::assertFalse($this->cache->getCached($filename));
     }
@@ -54,14 +64,11 @@ class CacheTest extends TestCase
     // can save cache file
     public function test_can_save_file_as_cache()
     {
-        $filename = 'bogus.txt';
-        $cacheFolder = __DIR__."/../../../cache/";
         $data = ['somedata' => 'and some more' ];
-        $this->cache->cache($filename, json_encode($data));
+        $this->cache->cache($this->bogusFile, json_encode($data));
 
-
-        self::assertTrue(file_exists($cacheFolder.$filename));
-        self::assertEquals(json_encode($data), $this->cache->getCached($filename));
+        self::assertTrue(file_exists($this->cacheFolder.$this->bogusFile));
+        self::assertEquals(json_encode($data), $this->cache->getCached($this->bogusFile));
     }
 
 
