@@ -1,3 +1,5 @@
 dependencies:
   TestClass: ['SK\Service\Fetcher']
-  Setup: ['SK\Service\Fetcher']
+  Setup: ['SK\Service\Fetcher', 'SK\Service\ConfigManager', 'SK\Service\Cache']
+
+dataUrl: http://tech-test.sandbox.samknows.com/php-2.0/testdata.json

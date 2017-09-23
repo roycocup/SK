@@ -19,9 +19,10 @@ class CommandTest extends TestCase
         self::assertNotEmpty($setup->fetcher);
     }
 
-//    public function test_online_data_filled_property()
-//    {
-//        $setup = new Setup();
-//        self::assertNotEmpty($setup->rawData);
-//    }
+    public function test_online_data_filled_property()
+    {
+        $setup = new Setup();
+        $setup->getOnlineData();
+        self::assertNotEmpty($setup->rawData);
+    }
 }

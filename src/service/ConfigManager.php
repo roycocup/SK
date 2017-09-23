@@ -30,4 +30,12 @@ class ConfigManager
         return [];
     }
 
+    public function get($propertyName)
+    {
+        if(!empty($this->configs[$propertyName]))
+            return $this->configs[$propertyName];
+        else
+            return false;
+    }
+
 }

@@ -38,4 +38,9 @@ class ConfigManagerTest extends TestCase
         $result = $this->cm->getDependencies('Tests\SK\Something\TestClass');
         self::assertEquals(['SK\Service\Fetcher'], $result);
     }
+
+    public function test_can_get_property_from_config_file()
+    {
+        self::assertNotNull($this->cm->get('dataUrl'));
+    }
 }
