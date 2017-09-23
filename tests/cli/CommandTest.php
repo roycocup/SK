@@ -10,18 +10,21 @@ class CommandTest extends TestCase
 {
     public function test_setup_class_extends_command()
     {
-        self::assertInstanceOf('SK\Cli\Command', new Setup());
+        $mock = $this->createMock('Doctrine\ORM\EntityManager');
+        self::assertInstanceOf('SK\Cli\Command', new Setup($mock));
     }
 
     public function test_has_fetcher()
     {
-        $setup = new Setup();
+        $mock = $this->createMock('Doctrine\ORM\EntityManager');
+        $setup = new Setup($mock);
         self::assertNotEmpty($setup->fetcher);
     }
 
     public function test_online_data_filled_property()
     {
-        $setup = new Setup();
+        $mock = $this->createMock('Doctrine\ORM\EntityManager');
+        $setup = new Setup($mock);
         $setup->getRawData();
         self::assertNotEmpty($setup->rawData);
     }

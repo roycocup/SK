@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rodrigodias
- * Date: 23/09/2017
- * Time: 21:56
- */
-
 namespace SK\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
 class DataPoint
 {
 
-    const TYPES = ['DOWNLOAD', 'UPLOAD', 'LATENCY'];
+    static public $types = [
+        'download'=>'DOWNLOAD',
+        'upload' => 'UPLOAD',
+        'latency' => 'LATENCY',
+        'packet_loss' => 'PACKET_LOSS'
+    ];
 
     /**
      * @Id @Column(type="integer") @GeneratedValue

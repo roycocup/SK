@@ -11,27 +11,30 @@ class SetupTest extends TestCase
 {
     public $cacheFile;
     public $cacheFolder;
+    public $em;
 
     public function setUp()
     {
         parent::setUp();
         $this->cacheFolder = __DIR__ . '/../../cache/';
+        $this->em = $this->createMock('Doctrine\ORM\EntityManager');
     }
 
     public function test_setup_class_extends_command()
     {
-        self::assertInstanceOf('SK\Cli\Command', new Setup());
+
+        self::assertInstanceOf('SK\Cli\Command', new Setup($this->em));
     }
 
     public function test_has_fetcher()
     {
-        $setup = new Setup();
+        $setup = new Setup($this->em);
         self::assertNotEmpty($setup->fetcher);
     }
 
     public function test_online_data_filled_property()
     {
-        $setup = new Setup();
+        $setup = new Setup($this->em);
         $setup->getRawData();
         self::assertNotEmpty($setup->rawData);
     }
@@ -47,7 +50,7 @@ class SetupTest extends TestCase
     public function test_first_call_will_save_a_cache_file_with_raw_data()
     {
         $this->deltree($this->cacheFolder);
-        $setup = new Setup();
+        $setup = new Setup($this->em);
         $setup->getRawData();
         self::assertNotEmpty($setup->rawData);
         self::assertTrue(file_exists($this->cacheFolder.Setup::$cacheFilename));
@@ -59,7 +62,7 @@ class SetupTest extends TestCase
         // pull data once
 
         $this->deltree(Cache::$cacheFolder);
-        $setup = new Setup();
+        $setup = new Setup($this->em);
         $setup->getRawData();
         self::assertTrue(file_exists(Cache::$cacheFolder.Setup::$cacheFilename));
 
@@ -71,11 +74,5 @@ class SetupTest extends TestCase
         $cache->cache(Setup::$cacheFilename, json_encode($data));
         self::assertEquals(json_encode($data), $setup->getRawData());
 
-    }
-
-    public function test_persists_data_to_DB()
-    {
-        DB::get();
-        self::assertTrue();
     }
 }
