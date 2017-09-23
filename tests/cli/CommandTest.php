@@ -22,7 +22,7 @@ class CommandTest extends TestCase
     public function test_online_data_filled_property()
     {
         $setup = new Setup();
-        $setup->getOnlineData();
+        $setup->getRawData();
         self::assertNotEmpty($setup->rawData);
     }
 }
