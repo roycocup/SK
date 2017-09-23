@@ -32,6 +32,16 @@ class Setup extends Command
         return $this->rawData;
     }
 
+    public function persistRawData()
+    {
+        
+    }
+
+    public function run()
+    {
+        $this->getRawData();
+        $this->persistRawData();
+    }
 
 
 }

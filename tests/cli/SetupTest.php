@@ -72,4 +72,10 @@ class SetupTest extends TestCase
         self::assertEquals(json_encode($data), $setup->getRawData());
 
     }
+
+    public function test_persists_data_to_DB()
+    {
+        DB::get();
+        self::assertTrue();
+    }
 }
