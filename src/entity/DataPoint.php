@@ -3,7 +3,8 @@ namespace SK\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @Entity(repositoryClass="DataPointRepository") @Table(name="datapoint")
+ * @Entity(repositoryClass="DataPointRepository")
+ * @Table( indexes={ @Index(columns={"timestamp"}) }, name="datapoint")
  **/
 class DataPoint
 {
@@ -16,7 +17,8 @@ class DataPoint
     ];
 
     /**
-     * @Id @Column(type="integer") @GeneratedValue
+     * @Id @Column(type="integer")
+     * @GeneratedValue
      */
     protected $id;
 

@@ -91,6 +91,7 @@ class Setup extends Command
                 $this->em->persist($dataPoint);
             }
             $this->em->flush();
+            $this->em->clear();
         }
     }
 

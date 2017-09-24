@@ -30,9 +30,11 @@ $conn = array(
 
 $entityManager = EntityManager::create($conn, $config);
 
-$setup = new SK\Cli\Setup($entityManager);
+if($argv[1] == 'run')
+{
+    $setup = new SK\Cli\Setup($entityManager);
 
-$setup->run();
+    $setup->run();
 
-
-echo "All done.";
+    echo "All done.";
+}
