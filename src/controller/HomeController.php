@@ -5,10 +5,15 @@ namespace SK\Controller;
 
 class HomeController extends Controller {
 
-    public $fetcher;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+    }
 
     public function home()
     {
-        echo "all good";
+        echo $this->twig->render('home.html.twig');
     }
 }

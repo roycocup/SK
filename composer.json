@@ -17,7 +17,8 @@
         "nezamy/route": "^1.1",
         "phpunit/phpunit": "^6.3",
         "symfony/yaml": "^3.3",
-        "doctrine/orm": "^2.5"
+        "doctrine/orm": "^2.5",
+        "twig/twig": "^2.4"
     },
     "require-dev": {
         "behat/behat": "^3.4"
