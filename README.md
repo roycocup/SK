@@ -9,7 +9,7 @@ It will also expose a user interface for static queries on the data.
 - Run `composer install`
 - Create a mysql database named `samknows`
 - Alter the credentials for db in the configs.yaml file 
-- Run `vendor/bin/doctrine orm:schema-tool:update --force` to install the 
+- Run `vendor/bin/doctrine orm:schema-tool:update --force` to install the database and schema
 - Run `./setup.php run` 
 - Setup a server and open the browser at the homepage and you should see a dropdown list with
 a load button. 
