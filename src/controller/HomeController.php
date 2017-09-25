@@ -22,8 +22,11 @@ class HomeController extends Controller {
         if(!empty($_POST) && $_POST['selectedDate'])
         {
             $selectedDate = $_POST['selectedDate'];
-            $data['curDate'] = $selectedDate;
-            $data['calculatedValues'] = $repo->getCalculatedValues($selectedDate);
+
+            $dt = new \DateTime();
+            $dt->setTimestamp((int) $selectedDate);
+            $data['curDate'] = $dt;
+            $data['calculatedValues'] = $repo->getCalculatedValues($dt);
         }
 
         //get all dates with data by hour

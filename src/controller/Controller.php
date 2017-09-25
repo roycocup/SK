@@ -8,6 +8,7 @@ ini_set("html_errors", 1);
 error_reporting(E_ALL);
 
 use SK\interfaces\Injectable;
+use SK\service\ConfigManager;
 use SK\Service\Injector;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
@@ -23,15 +24,16 @@ class Controller implements Injectable
 
     public function __construct()
     {
+        $cm = new ConfigManager();
         // Doctrine
         $paths = array(__DIR__."/../entity");
         $isDevMode = true;
         $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
         $conn = array(
             'driver'   => 'pdo_mysql',
-            'user'     => 'root',
-            'password' => 'root',
-            'dbname'   => 'samknows',
+            'user'     => $cm->get('dbusername'),
+            'password' => $cm->get('dbpassword'),
+            'dbname'   => $cm->get('dbname'),
         );
 
         $this->em = EntityManager::create($conn, $config);

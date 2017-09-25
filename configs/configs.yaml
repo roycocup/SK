@@ -3,3 +3,7 @@ dependencies:
   Setup: ['SK\Service\Fetcher', 'SK\Service\ConfigManager', 'SK\Service\Cache']
 
 dataUrl: http://tech-test.sandbox.samknows.com/php-2.0/testdata.json
+
+dbusername: root
+dbpassword: root
+dbname: samknows

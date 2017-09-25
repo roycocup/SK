@@ -15,14 +15,15 @@ require BASE_PATH.'vendor/autoload.php';
 // Doctrine
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+$cm = new \SK\service\ConfigManager();
 $paths = array(__DIR__."/src/entity");
 $isDevMode = true;
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $conn = array(
     'driver'   => 'pdo_mysql',
-    'user'     => 'root',
-    'password' => 'root',
-    'dbname'   => 'samknows',
+    'user'     => $cm->get('dbusername'),
+    'password' => $cm->get('dbpassword'),
+    'dbname'   => $cm->get('dbname'),
 );
 
 $entityManager = EntityManager::create($conn, $config);
