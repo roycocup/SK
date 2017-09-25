@@ -2,7 +2,48 @@
 
 {% block content %}
 
-    <div>Hello from div</div>
+    <form action="" method="POST">
+        <div class="form-group">
+            <label for="dts1">Select Date and Time</label>
+            <select class="form-control" id="dts1" name="selectedDate">
+                {% for d in dates %}
+                    <option value="{{ d.timestamp | date("U") }}">{{ d.timestamp | date("d/m/Y H:i:s") }}</option>
+                {% endfor %}
+            </select>
+            <p>&nbsp;</p>
+            <button type="submit" class="btn btn-primary">Load</button>
+        </div>
+    </form>
+
+    {% if calculatedValues %}
+        <h2>{{ curDate | date('d-m-Y H:i:s')}}</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Time</th>
+                <th>Mean</th>
+                <th>Median</th>
+                <th>Minimum</th>
+                <th>Maximum</th>
+                <th>Sample</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for value in calculatedValues %}
+                    <tr>
+                        <th scope="row">{{ value.id }}</th>
+                        <td>{{ value.timestamp | date('H:i:s') }}</td>
+                        <td>{{ value.average | number_format(2, '.', '') }}</td>
+                        <td></td>
+                        <td>{{ value.mn | number_format(0, '.', '')}}</td>
+                        <td>{{ value.mx | number_format(0, '.', '')}}</td>
+                        <td>{{ value.ssize }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 
     
 {% endblock %}
